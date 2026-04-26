@@ -51,12 +51,13 @@ spec:
       containers:
       - name: mysql
         image: annurukulasekhar/mysql:1.5.0
+        envFrom:
+        - secretRef:
+           name: mysql
         volumeMounts:
         - name: mysql-secret
           mountPath: /secrets
       volumes:
       - name: mysql-secret
         emptyDir: {}
-        envFrom:
-        - secretRef:
-           name: mysql
+        
